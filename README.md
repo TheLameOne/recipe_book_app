@@ -1,17 +1,64 @@
-# recipe_book_app
+# Recipe Book App
+---
 
-Folder Structure
-https://tree.nathanfriend.com/?s=(%27options!(%27fancy!true~fullPath!false~trailingSlash!true~rootDot!false)~7(%277%27lib-6s0-5ie93_5y86_bloc89widget92error_widget0*23_card0*favourites4*home4*3_details4-main0*%27)~version!%271%27)*-2-%5Cn20.dart2%20%203meal4_page05repositor6model937source!80-view9s*%01987654320-*
+## **Features**
 
-## Getting Started
+- **Recipe Listing:**  
+  Browse through a list of recipes fetched dynamically from the repository.
 
-This project is a starting point for a Flutter application.
+- **Search Functionality:**  
+  Search for recipes using a search bar for real-time filtering.
 
-A few resources to get you started if this is your first Flutter project:
+- **Favorites Management:**  
+  Mark recipes as favorites and view them on a dedicated Favorites page.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- **Refresh Recipes:**  
+  Reload the list of recipes with a refresh button.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- **Recipe Details:**  
+  View detailed information about a recipe by selecting it from the list.
+
+- **State Management:**  
+  Use **Flutter Bloc** to  manage application state.
+
+---
+
+## **Screens**
+
+1. **Home Page**
+   - Displays a list of 10 random recipes.
+   - Includes a search bar, refresh button, and a shortcut to the Favorites page.
+   - Provides the ability to add/remove recipes from favorites.
+
+2. **Favorites Page**
+   - A dedicated page displaying all favorite recipes.
+   - Manage favorites with a simple toggle.
+
+3. **Recipe Details Page**
+   - Displays detailed information about the selected recipe.
+
+---
+
+## *Folder Structure*
+```
+lib/
+├── models/
+│   └── meals.dart
+├── repositories/
+│   └── meal_repository.dart
+├── viewmodels/
+│   └── meal_bloc.dart
+├── views/
+│   ├── widgets/
+│   │   ├── error_widget.dart
+│   │   └── meal_card.dart
+│   ├── favourites_page.dart
+│   ├── home_page.dart
+│   └── meal_details_page.dart
+└── main.dart
+```
+
+## *Architecture*
+MVVM Architecture
+
+
