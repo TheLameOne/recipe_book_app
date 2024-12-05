@@ -18,7 +18,6 @@ class HomePage extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.refresh),
             onPressed: () {
-              // Trigger refresh to fetch new recipes
               context.read<MealBloc>().add(FetchMealsEvent());
             },
           ),

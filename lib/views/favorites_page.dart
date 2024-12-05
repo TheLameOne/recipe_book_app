@@ -18,8 +18,22 @@ class FavoritesPage extends StatelessWidget {
               itemCount: state.favorites.length,
               itemBuilder: (context, index) {
                 final meal = state.favorites[index];
+                final isFavorite = state.favorites.contains(meal);
                 return MealCard(
                   meal: meal,
+                  trailing: IconButton(
+                    icon: Icon(
+                      isFavorite ? Icons.favorite : Icons.favorite_border,
+                      color: isFavorite ? Colors.red : null,
+                    ),
+                    onPressed: () {
+                      if (isFavorite) {
+                        context.read<MealBloc>().add(RemoveFavoriteEvent(meal));
+                      } else {
+                        context.read<MealBloc>().add(AddFavoriteEvent(meal));
+                      }
+                    },
+                  ),
                   onTap: () => Navigator.push(
                     context,
                     MaterialPageRoute(
