@@ -11,6 +11,8 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController searchController = TextEditingController();
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Recipe Book'),
@@ -18,6 +20,7 @@ class HomePage extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.refresh),
             onPressed: () {
+              searchController.clear();
               context.read<MealBloc>().add(FetchMealsEvent());
             },
           ),
@@ -29,6 +32,27 @@ class HomePage extends StatelessWidget {
             ),
           ),
         ],
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(60),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: TextField(
+              controller: searchController,
+              onChanged: (query) {
+                context.read<MealBloc>().add(SearchMealsEvent(query));
+              },
+              decoration: InputDecoration(
+                hintText: 'Search recipes...',
+                prefixIcon: const Icon(Icons.search),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                filled: true,
+                fillColor: Colors.white,
+              ),
+            ),
+          ),
+        ),
       ),
       body: BlocBuilder<MealBloc, MealState>(
         builder: (context, state) {
@@ -36,9 +60,9 @@ class HomePage extends StatelessWidget {
             return const Center(child: CircularProgressIndicator());
           } else if (state is MealLoaded) {
             return ListView.builder(
-              itemCount: state.meals.length,
+              itemCount: state.filteredMeals.length,
               itemBuilder: (context, index) {
-                final meal = state.meals[index];
+                final meal = state.filteredMeals[index];
                 final isFavorite = state.favorites.contains(meal);
 
                 return MealCard(
@@ -54,7 +78,6 @@ class HomePage extends StatelessWidget {
                       color: isFavorite ? Colors.red : null,
                     ),
                     onPressed: () {
-                      // Add or remove favorite
                       if (isFavorite) {
                         context.read<MealBloc>().add(RemoveFavoriteEvent(meal));
                       } else {

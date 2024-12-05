@@ -4,7 +4,7 @@ import 'package:recipe_book_app/models/meal.dart';
 class MealCard extends StatelessWidget {
   final Meal meal;
   final VoidCallback onTap;
-  final Widget? trailing; // Added trailing widget for custom actions
+  final Widget? trailing;
 
   const MealCard({
     required this.meal,
@@ -23,7 +23,7 @@ class MealCard extends StatelessWidget {
         title: Text(meal.mealName,
             style: const TextStyle(fontWeight: FontWeight.bold)),
         subtitle: Text(meal.category),
-        trailing: trailing, // Trailing widget for favorite button
+        trailing: trailing,
         onTap: onTap,
       ),
     );
