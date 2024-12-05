@@ -1,6 +1,7 @@
 # recipe_book_app
 
-A new Flutter project.
+Folder Structure
+https://tree.nathanfriend.com/?s=(%27options!(%27fancy!true~fullPath!false~trailingSlash!true~rootDot!false)~7(%277%27lib-6s0-5ie93_5y86_bloc89widget92error_widget0*23_card0*favourites4*home4*3_details4-main0*%27)~version!%271%27)*-2-%5Cn20.dart2%20%203meal4_page05repositor6model937source!80-view9s*%01987654320-*
 
 ## Getting Started
 
