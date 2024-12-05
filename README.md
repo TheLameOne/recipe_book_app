@@ -38,6 +38,8 @@
    - Displays detailed information about the selected recipe.
 
 ---
+## Video Demo
+[Youtube Video Link](https://youtu.be/NhATHDWXidE)
 
 ## *Folder Structure*
 ```
